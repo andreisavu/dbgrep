@@ -7,12 +7,12 @@ __author__ = 'Andrei Savu <contact@andreisavu.ro>'
 
 import sys
 import csv
+import re
 
 from optparse import OptionParser
 from sqlalchemy import *
 from itertools import izip
 
-from dbgrep.rexp import any_match
 
 def main():
     opt, args = parse_args()
@@ -62,6 +62,24 @@ def parse_args():
         action='append', help='regexp for TABLE selection', metavar='TABLE')
 
     return parser.parse_args()
+
+def any_match(expressions, value):
+    """
+    Return true if any expression matches the value
+    """
+    for exp in expressions:
+        if re.match(exp, str(value)):
+            return True
+    return False
+
+def any_match_set(expressions, values):
+    """
+    Return true if any expression matches any of the values
+    """
+    for value in values:
+        if any_match(expressions, value):
+            return True
+    return False
 
 if __name__ == '__main__':
     main()
