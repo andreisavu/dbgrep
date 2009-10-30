@@ -18,6 +18,9 @@ def main():
     opt, args = parse_args()
     wr = csv.writer(sys.stdout)
 
+    if opt.tables is None:
+        opt.tables = ['.*']
+
     if None not in [opt.dsn, opt.exp, opt.tables]:
         for result in do_search(opt.dsn, opt.tables, opt.exp):
             wr.writerow(result)
@@ -59,8 +62,7 @@ def parse_args():
         action="append", help='search regular EXPRESSION', metavar='EXPRESSION')
 
     parser.add_option('-t', '--table' , dest='tables',
-        action='append', help='regexp for TABLE selection', metavar='TABLE',
-        default='.*')
+        action='append', help='regexp for TABLE selection', metavar='TABLE')
 
     return parser.parse_args()
 
