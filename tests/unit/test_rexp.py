@@ -1,7 +1,7 @@
 
 import unittest
 
-from dbgrep.rexp import any_match, any_match_set
+from dbgrep import any_match, any_match_set
 
 class TestRexp(unittest.TestCase):
     
