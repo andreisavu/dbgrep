@@ -1,0 +1,22 @@
+
+Database Grep
+-------------
+
+A simple multi-column & multi-table grep:
+
+    ./dbgrep.py --dsn mysql://user:password@server/db --table "data.*"
+
+Only distinct elements:
+    
+    ./dbgrep.py -d mysql://user:password@server/db -e ".*@.*" -t "test.*" | sort | uniq
+
+Output CSV:
+    <table_name> ; <column_name> ; <value>
+
+
+Requirements
+------------
+
+SQLAlchemy 
+
+
