@@ -16,7 +16,7 @@ from itertools import izip
 
 def main():
     opt, args = parse_args()
-    wr = csv.writer(sys.stdout)    
+    wr = csv.writer(sys.stdout)
 
     if None not in [opt.dsn, opt.exp, opt.tables]:
         for result in do_search(opt.dsn, opt.tables, opt.exp):
@@ -59,7 +59,8 @@ def parse_args():
         action="append", help='search regular EXPRESSION', metavar='EXPRESSION')
 
     parser.add_option('-t', '--table' , dest='tables',
-        action='append', help='regexp for TABLE selection', metavar='TABLE')
+        action='append', help='regexp for TABLE selection', metavar='TABLE',
+        default='.*')
 
     return parser.parse_args()
 
