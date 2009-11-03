@@ -10,6 +10,10 @@ Only distinct elements:
     
     ./dbgrep.py -d mysql://user:password@server/db -e ".*@.*" -t "test.*" | sort | uniq
 
+All email addresses:
+
+    ./dbgrep.py -d mysql://user:password@host/db -t "table_.*" -e "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" > emails.csv 
+
 Output CSV:
     <table_name> ; <column_name> ; <value>
 
