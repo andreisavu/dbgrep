@@ -17,6 +17,9 @@ All email addresses:
 Output CSV:
     <table_name> ; <column_name> ; <value>
 
+Push results to sqlite database:
+
+    ./csv2sqlite.py -d sqlite3.db -f data.csv -c "cat,col,data" -t csv
 
 Requirements
 ------------
